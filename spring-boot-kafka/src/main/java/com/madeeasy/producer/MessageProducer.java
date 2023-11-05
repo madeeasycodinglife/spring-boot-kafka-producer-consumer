@@ -20,6 +20,8 @@ public class MessageProducer {
 
     public void sendMessage(String message) {
         log.info("MESSAGE SENT FROM PRODUCER END -> " + message);
-        kafkaTemplate.send(topic, message);
+        for (int i = 0; i < 10000000; i++) {
+            kafkaTemplate.send(topic, message);
+        }
     }
 }

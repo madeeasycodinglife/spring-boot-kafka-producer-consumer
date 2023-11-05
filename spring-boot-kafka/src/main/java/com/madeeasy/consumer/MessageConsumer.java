@@ -16,8 +16,23 @@ public class MessageConsumer {
     private MessageRepository messageRepo;
 
     @KafkaListener(topics = "${myapp.kafka.topic}", groupId = "xyz")
-    public void consume(String message) {
-        log.info("MESSAGE RECEIVED AT CONSUMER END -> " + message);
+    public void consume1(String message) {
+        log.info("MESSAGE1 RECEIVED AT CONSUMER END -> " + message);
+        messageRepo.addMessage(message);
+    }
+    @KafkaListener(topics = "${myapp.kafka.topic}", groupId = "xyz")
+    public void consume2(String message) {
+        log.info("MESSAGE2 RECEIVED AT CONSUMER END -> " + message);
+        messageRepo.addMessage(message);
+    }
+    @KafkaListener(topics = "${myapp.kafka.topic}", groupId = "xyz")
+    public void consume3(String message) {
+        log.info("MESSAGE3 RECEIVED AT CONSUMER END -> " + message);
+        messageRepo.addMessage(message);
+    }
+    @KafkaListener(topics = "${myapp.kafka.topic}", groupId = "xyz")
+    public void consume4(String message) {
+        log.info("MESSAGE4 RECEIVED AT CONSUMER END -> " + message);
         messageRepo.addMessage(message);
     }
 }
